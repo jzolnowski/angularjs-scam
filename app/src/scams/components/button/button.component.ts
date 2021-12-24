@@ -1,3 +1,6 @@
+import * as angular from "angular";
+import {FilteredListComponent} from "../filtered-list/filtered-list.component";
+
 /**
  * @ngInject
  */
@@ -20,4 +23,11 @@ export class ButtonComponent {
           </md-button>
         `
     };
+}
+
+export module ButtonModule {
+    export var name: string = 'ButtonModule';
+    angular
+        .module(ButtonModule.name, ['ngMaterial'])
+        .component(ButtonComponent.componentName, ButtonComponent.componentConfig);
 }

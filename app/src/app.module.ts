@@ -7,14 +7,14 @@ import 'angular-sanitize';
 
 import {AppComponent} from './app.component';
 import {UsersModule} from './users/users.module';
-import {SharedModule} from "./shared/shared.module";
+import {ButtonModule} from './scams/components/button/button.component';
 
 
 module AppModule {
   "use strict";
 
   // Register our module and it's dependencies
-  angular.module('AppModule', ['ngMaterial', 'ngSanitize', UsersModule.name, SharedModule.name])
+  angular.module('AppModule', ['ngMaterial', 'ngSanitize', UsersModule.name, ButtonModule.name])
     .config(function ($mdIconProvider: angular.material.IIconProvider, $mdThemingProvider: angular.material.IThemingProvider) {
       $mdIconProvider
         .defaultIconSet("./assets/svg/avatars.svg", 128)
