@@ -2,7 +2,6 @@ import * as angular from 'angular';
 import 'angular-animate';
 import 'angular-aria';
 import 'angular-material';
-import 'angular-messages';
 import 'angular-sanitize';
 
 import {AppComponent} from './app.component';
@@ -13,7 +12,6 @@ import {ButtonModule} from './scams/components/button/button.component';
 module AppModule {
   "use strict";
 
-  // Register our module and it's dependencies
   angular.module('AppModule', ['ngMaterial', 'ngSanitize', UsersModule.name, ButtonModule.name])
     .config(function ($mdIconProvider: angular.material.IIconProvider, $mdThemingProvider: angular.material.IThemingProvider) {
       $mdIconProvider

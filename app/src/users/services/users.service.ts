@@ -1,11 +1,16 @@
+import { IPromise } from 'angular';
+
+export type User = Readonly<{
+  name: string;
+  avatar: string;
+  content: string;
+}>
+
 /**
- * Users Data Service
- *
- * Uses embedded, hard-coded data model; acts asynchronously to simulate remote data service call(s).
  * @ngInject
  */
 export class UsersService {
-  static users = [
+  static users: User[] = [
     {
       name: 'Lia Lugo',
       avatar: 'svg-1',
@@ -38,21 +43,11 @@ export class UsersService {
     }
   ];
 
-  private $q:ng.IQService;
 
-  constructor($q:ng.IQService) {
-    this.$q = $q;
-
-    return this;
+  constructor(private readonly $q: ng.IQService) {
   }
 
-  /**
-   * Returns a promise which asynchronously loads the list of users.
-   *
-   * @returns {IPromise<{name: string, avatar: string, content: string}[]>}
-   */
-  loadAllUsers() {
-    // Simulate async nature of real remote calls
+  loadAllUsers(): IPromise<User[]> {
     return this.$q.when(UsersService.users);
   }
 }

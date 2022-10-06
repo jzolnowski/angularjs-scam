@@ -12,7 +12,7 @@ export interface User {
 }
 
 export module UsersModule {
-  export var name: string = 'Users';
+  export const name: string = 'Users';
 
   angular
     .module(UsersModule.name,[ButtonModule.name, FilteredListModule.name, 'ngMaterial'])

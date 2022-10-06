@@ -2,18 +2,11 @@ import {User} from '../../users.module';
 import angular = require('angular');
 
 /**
- * User Details Component
- *
- * Contains functionality related to contacting (or sharing with) users.
- *
- * @constructor
  * @ngInject
  */
 export class UserDetailsComponent {
-  // Define our user-details component's name
   static componentName: string = "msUserDetails";
 
-  // Define our user-details component's component config
   static componentConfig: ng.IComponentOptions = {
     bindings: {
       selected: '<'
@@ -37,11 +30,6 @@ export class UserDetailsComponent {
     this.$mdBottomSheet = $mdBottomSheet;
   }
 
-  /**
-   * Presents the user with a UI to share with the selected user.
-   *
-   * The current implementation uses a $mdBottomSheet to accomplish this.
-   */
   share(): void {
     const self = this;
     const config: angular.material.IBottomSheetOptions = {
@@ -53,22 +41,16 @@ export class UserDetailsComponent {
     };
 
     this.$mdBottomSheet.show(config).then((clickedItem) => {
-      // Use a fancy TypeScript template string with interpolation
       const html = `<p>You contacted ${self.selected.name} via ${clickedItem.name}!</p>`;
 
-      // Setup our Alert dialog config object
       const alert = this.$mdDialog.alert()
           .title('Sharing Success')
           .htmlContent(this.$sce.trustAsHtml(html))
           .ok('Sweet!');
 
-      // Show the alert
       this.$mdDialog.show(alert);
     }).catch(() => console.log(`BottomSheet dismissed.`));
 
-    /**
-     * Bottom Sheet controller for the Avatar Actions
-     */
     function UserSheetController(): void {
       this.user = self.selected;
       this.items = [

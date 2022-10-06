@@ -1,14 +1,11 @@
 import * as angular from "angular";
-import {ButtonComponent} from "../button/button.component";
 
 /**
  * @ngInject
  */
 export class FilteredListComponent {
-  // Define our UsersListComponent component's name
   static componentName: string = "msFilteredList";
 
-  // Define our UsersListComponent component's component config
   static componentConfig: ng.IComponentOptions = {
     bindings: {
       items: '<',
@@ -29,7 +26,7 @@ export class FilteredListComponent {
 }
 
 export module FilteredListModule {
-  export var name: string = 'FilteredListModule';
+  export const name: string = 'FilteredListModule';
   angular
       .module(FilteredListModule.name, ['ngMaterial'])
       .component(FilteredListComponent.componentName, FilteredListComponent.componentConfig);
